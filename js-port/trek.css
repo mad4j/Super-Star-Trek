@@ -1,0 +1,42 @@
+body {
+    font-family: monospace;
+    font-size:10pt;
+}
+
+div#output_area {
+    white-space: pre;
+/*    position: absolute;*/
+    top: 0; left: 0;
+    z-index: 1;
+/*    height: 70%;*/
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+}
+
+div#input_area {
+    color: blue;
+    position: fixed;
+    height: 40px;
+    width: 100%;
+    bottom: 0; left: 0;
+    z-index: 2;
+    padding: 10px 10px 10px 10px;
+/*    margin: 10px 10px 10px 10px;*/
+    background-color: gray;
+}
+
+span.command_history {
+    font-weight: bold;
+    color: #383838;
+/*    color: #404040; */
+}
+
+span.command_echo {
+    font-weight: bold;
+}
+
+span.command_cursor {
+    text-decoration: blink;
+    font-weight: bold;
+}
+
