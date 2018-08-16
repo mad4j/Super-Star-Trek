@@ -2,6 +2,15 @@
 
 ## References
 
+### Basic
+
 * https://www.atariarchives.org/basicgames/showpage.php?page=157
-* http://outserv.cactus.org/~nystrom/startrek.html
 * http://www.vintage-basic.net/games.html
+
+### C
+
+* http://outserv.cactus.org/~nystrom/startrek.html
+
+### Javascript
+
+* http://nerici.org/bloggo/p/trek/
