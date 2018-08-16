@@ -1,5 +1,10 @@
 # Super-Star-Trek
 
+TODO:
+
+ * compile C-port in WASM
+ * use JS-port as front-end
+
 ## References
 
 ### Basic
