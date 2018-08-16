@@ -137,7 +137,7 @@ void sub2(void);
 void showfile(char *filename);
 int openfile(char * sFilename, char * sMode);
 void closefile(void);
-int getline(char *s);
+int get_line(char *s);
 void randomize(void);
 int get_rand(int iSpread);
 double rnd(void);
@@ -225,7 +225,7 @@ intro(void)
 
   printf("\nDo you need instructions (y/n): ");
 
-  gets(sTemp);
+  fgets(sTemp, MAXCOL, stdin);
 
   if (sTemp[0] == 'y' || sTemp[0] == 'Y')
     showfile("startrek.doc");
@@ -268,7 +268,7 @@ new_game(void)
 
       printf("Command? ");
 
-      gets(sTemp);
+      fgets(sTemp, MAXCOL, stdin);
       printf("\n");
 
       if (! strncmp(sTemp, "nav", 3))
@@ -497,7 +497,7 @@ new_quadrant(void)
 void
 course_control(void)
 {
-  register i;
+  int i;
   int c2, c3, q4, q5;
   string sTemp;
   double c1;
@@ -505,7 +505,7 @@ course_control(void)
 
   printf("Course (0-9): ");
 
-  gets(sTemp);
+  fgets(sTemp, MAXCOL, stdin);
 
   printf("\n");
 
@@ -526,7 +526,7 @@ course_control(void)
 
   printf("Warp Factor (0-%s): ", sX);
 
-  gets(sTemp);
+  fgets(sTemp, MAXCOL, stdin);
 
   printf("\n");
 
@@ -739,7 +739,7 @@ maneuver_energy(void)
 void
 short_range_scan(void)
 {
-  register i, j;
+  int i, j;
 
   strcpy(sC, "GREEN");
 
@@ -806,7 +806,7 @@ short_range_scan(void)
 void
 long_range_scan(void)
 {
-  register i, j;
+  int i, j;
 
   if (d[3] < 0.0)
     {
@@ -836,7 +836,7 @@ long_range_scan(void)
 void
 phaser_control(void)
 {
-  register i;
+  int i;
   int iEnergy;
   int h1, h;
   string sTemp;
@@ -862,7 +862,7 @@ phaser_control(void)
 
   printf("Number of units to fire: ");
 
-  gets(sTemp);
+  fgets(sTemp, MAXCOL, stdin);
 
   printf("\n");
 
@@ -944,7 +944,7 @@ photon_torpedoes(void)
 
   printf("Course (0-9): ");
 
-  gets(sTemp);
+  fgets(sTemp, MAXCOL, stdin);
 
   printf("\n");
 
@@ -1082,7 +1082,7 @@ damage_control(void)
 { 
   int a1;
   double d3 = 0.0;
-  register i;
+  int i;
 
   if (d[6] < 0.0)
     {
@@ -1123,9 +1123,9 @@ damage_control(void)
   for (r1 = 1; r1 <= 8; r1++)
     {
       get_device_name();
-      printf(sG2);
+      printf("%s", sG2);
       for (i = 1; i < 25 - strlen(sG2); i++)
-	printf(" ");
+	      printf(" ");
       printf("%4.1f\n", d[r1]);
     }
 
@@ -1148,7 +1148,7 @@ sheild_control(void)
 
   printf("Input number of units to sheilds: ");
 
-  gets(sTemp);
+  fgets(sTemp, MAXCOL, stdin);
 
   printf("\n");
 
@@ -1188,7 +1188,7 @@ library_computer(void)
 
   printf("Computer active and awating command: ");
 
-  gets(sTemp);
+  fgets(sTemp, MAXCOL, stdin);
   printf("\n");
 
   if (! strncmp(sTemp, "0", 1))
@@ -1338,19 +1338,19 @@ dirdist_calc(void)
     cint(s1), cint(s2));
 
   printf("Please enter initial X coordinate: ");
-  gets(sTemp);
+  fgets(sTemp, MAXCOL, stdin);
   c1 = atoi(sTemp);
 
   printf("Please enter initial Y coordinate: ");
-  gets(sTemp);
+  fgets(sTemp, MAXCOL, stdin);
   a = atoi(sTemp);
 
   printf("Please enter final X coordinate: ");
-  gets(sTemp);
+  fgets(sTemp, MAXCOL, stdin);
   w1 = atoi(sTemp);
 
   printf("Please enter final Y coordinate: ");
-  gets(sTemp);
+  fgets(sTemp, MAXCOL, stdin);
   x = atoi(sTemp);
 
   compute_vector();
@@ -1381,7 +1381,7 @@ galaxy_map(void)
     for (j = 0; j < j0; j++)
       printf(" ");
 
-    printf(sG2);
+    printf("%s", sG2);
 
     for (j = 0; j < j0; j++)
       printf(" ");
@@ -1397,7 +1397,7 @@ galaxy_map(void)
     for (j = 0; j < j0; j++)
       printf(" ");
 
-    printf(sG2); 
+    printf("%s", sG2); 
    
     printf("\n");
   }
@@ -1519,7 +1519,7 @@ end_of_game(void)
       printf("If there is a volunteer, let him step forward and");
       printf(" enter 'aye': ");
 
-      gets(sTemp);
+      fgets(sTemp, MAXCOL, stdin);
       printf("\n");
 
       if (! strncmp(sTemp, "aye", 3))
@@ -1804,9 +1804,9 @@ showfile(char *filename)
   if (openfile(filename, "r") != 0)
     return;
 
-  while (getline(lBuffer) != 0)
+  while (get_line(lBuffer) != 0)
     {
-      printf(lBuffer);
+      printf("%s", lBuffer);
       
       if (iRow++ > MAXROW - 3)
         {
@@ -1842,7 +1842,7 @@ closefile(void)
 }
 
 int
-getline(char *s)
+get_line(char *s)
 {
   if (fgets(s, MAXCOL, stream) == NULL)
     return(0);
