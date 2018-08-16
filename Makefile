@@ -1,38 +1,18 @@
 #
 #       Super Star Trek Classic
 #
-#	This program is free software; you can redistribute it
-#	and/or  modify in any way you want.
-#
 
-#CC	= mcc
-#CC	= c89
-CC	= gcc
-#CC	= acc
-#CC	= cc
-#CC     = purify acc
+CC     = gcc
+SRC    = startrek.c
+EXE    = startrek
+CFLAGS = -o3
+LIBS   = -lm
 
-#CFLAGS	= -g 
-#CFLAGS	= -O 
-CFLAGS	= -O -Wall -g
-#CFLAGS	= -O -g
-OBJS	= startrek.o
-LIBS	= -lm
-PROGS	= startrek
-INSTALL	= /etc/install
-LBIN	= /usr/games
 
-all:		$(PROGS) 
+all :: build
 
-startrek:	$(OBJS)
-		$(CC) $(LDFLAGS) -o startrek $(OBJS) $(LIBS)
+build ::
+	$(CC) $(SRC) $(CFLAGS) -o $(EXE) $(LIBS)
 
-clean:
-		rm -f $(PROGS) *.o core startrek.0*
-
-install:
-		$(INSTALL) -f $(LBIN) -u bin -g bin -m 755 $(PROGS)
-		strip $(LBIN)/$(PROGS)
-
-archive:	clean
-		./archive.sh startrek
+clean ::
+	rm -f $(EXE)
