@@ -209,54 +209,54 @@ function handle_command(command)
 {
       printf("\n");
       switch (command) {
-        case "nav": {
+        case "NAV": {
             course_control();
             break;
         }
-        case "srs": {
+        case "SRS": {
             printf("Peforming short range scan sir.\n");
             short_range_scan();
             break;
         }
-        case "lrs": {
+        case "LRS": {
             long_range_scan();
             break;
         }
-        case "pha": {
+        case "PHA": {
             phaser_control();
             break;
         }
-        case "tor": {
+        case "TOR": {
             photon_torpedoes();
             break;
         }
-        case "she": {
+        case "SHE": {
             sheild_control();
             break;
         }
-        case "dam": {
+        case "DAM": {
             damage_control();
             break;
         }
-        case "com": {
+        case "COM": {
             library_computer();
             break;
         }
-        case "xxx": {
+        case "XXX": {
             resign_commision();
             break;
         }
         default: {
             printf("Enter one of the following:\n\n");
-            printf("  nav - To Set Course\n");
-            printf("  srs - Short Range Sensors\n");
-            printf("  lrs - Long Range Sensors\n");
-            printf("  pha - Phasers\n");
-            printf("  tor - Photon Torpedoes\n");
-            printf("  she - Sheild Control\n");
-            printf("  dam - Damage Control\n");
-            printf("  com - Library Computer\n");
-            printf("  xxx - Resign Command\n");
+            printf("  NAV - To Set Course\n");
+            printf("  SRS - Short Range Sensors\n");
+            printf("  LRS - Long Range Sensors\n");
+            printf("  PHA - Phasers\n");
+            printf("  TOR - Photon Torpedoes\n");
+            printf("  SHE - Sheild Control\n");
+            printf("  DAM - Damage Control\n");
+            printf("  COM - Library Computer\n");
+            printf("  XXX - Resign Command\n");
             printf("\n");
         }
       }
@@ -2033,14 +2033,14 @@ function userkeypress(event)
         var keynum = event.which;
         
         // validate the key
-        if ((keynum >= 48 && keynum <= 57) ||       // number
-            (keynum >= 97 && keynum <= 122) ||      // lower case letter
-            (keynum === 46)) {                      // full stop
+        if ((keynum >= 48 && keynum <= 57) ||       // digits
+            (keynum >= 65 && keynum <= 90)) {       // letters
             // is alphanumeric so it's fine
             var keychar = String.fromCharCode(keynum);
             commandstring += keychar;
-        }
-        else if (keynum === 8) {
+        } else if (keynum === 190) {               // period
+            commandstring += '.';
+        } else if (keynum === 8) {
             // Backspace (delete)
             commandstring = commandstring.slice(0,-1);
         }
