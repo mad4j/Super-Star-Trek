@@ -31,12 +31,12 @@ span.command_history {
 /*    color: #404040; */
 }
 
-span.command_echo {
-    font-weight: bold;
-}
-
 span.command_cursor {
-    text-decoration: blink;
+    animation: blinker 1s linear infinite;
     font-weight: bold;
 }
 
+@keyframes blinker {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
