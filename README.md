@@ -12,6 +12,7 @@ Fixed :
 Fixed:
 
 * cursor now blinking on modern browsers
+* fixed management of <kbd>Backspace</kbd> and <kbd>Esc</kbd> keys
 
 
 TODO:
