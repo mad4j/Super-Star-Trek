@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+   	<script src="terminal-core.js"></script>
+    <link rel="stylesheet" type="text/css" href="terminal.css" />	
+</head>
+<body onKeyDown="userkeypress(event)" onChange="usercommand(this.id)">
+    <div id="output_area">
+        <script>
+            clearOutput();
+            writeString("HERE!!\n");
+            writeString("HelloWorld!!\n");
+            var s = readString();
+            console.log(s);
+            //printf("HelloWorld!!\n");
+        </script>
+    </div>
+</body>
+</html>
+
